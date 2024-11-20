@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-watcher
+  labels:
+    app: k8s-watcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-watcher
+  template:
+    metadata:
+      labels:
+        app: k8s-watcher
+    spec:
+      serviceAccountName: k8s-event-watcher-sa
+      containers:
+        - name: k8s-watcher
+          image: kubernetes-watcher:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: SPRING_PROFILES_ACTIVE
+            - name: KUBERNETES_SERVICE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: KUBERNETES_SERVICE_HOST
+            - name: KUBERNETES_SERVICE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: KUBERNETES_SERVICE_PORT
+            - name: EVENT_WATCHER_FILTERS
+              valueFrom:
+                configMapKeyRef:
+                  name: filter-config
+                  key: config.json
+            - name: NOTIFICATION_SLACK_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: notification.slack.config.enabled
+            - name: NOTIFICATION_SLACK_WEBHOOK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: k8s-watcher-secret
+                  key: SLACK_WEBHOOK_URL
+            - name: NOTIFICATION_SLACK_CHANNEL
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: notification.slack.config.channel
+            - name: NOTIFICATION_SLACK_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: notification.slack.config.username
+            - name: NOTIFICATION_SLACK_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: k8s-watcher-secret
+                  key: SLACK_TOKEN
+            - name: NOTIFICATION_EMAIL_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: notification.email.config.enabled
+            - name: NOTIFICATION_EMAIL_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: notification.email.config.host
+            - name: NOTIFICATION_EMAIL_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: notification.email.config.port
+            - name: NOTIFICATION_EMAIL_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: notification.email.config.protocol
+            - name: NOTIFICATION_EMAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: k8s-watcher-secret
+                  key: EMAIL_USERNAME
+            - name: NOTIFICATION_EMAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: k8s-watcher-secret
+                  key: EMAIL_PASSWORD
+            - name: NOTIFICATION_EMAIL_TO
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-watcher-config
+                  key: notification.email.config.to

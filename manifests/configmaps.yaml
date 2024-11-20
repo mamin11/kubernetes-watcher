@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k8s-watcher-config
+data:
+  SPRING_PROFILES_ACTIVE: "dev"
+  KUBERNETES_SERVICE_HOST: "kubernetes.default.svc"
+  KUBERNETES_SERVICE_PORT: "443"
+  notification.slack.config.enabled: "false"
+  notification.slack.config.channel: "k8s-events"
+  notification.slack.config.username: "Kubernetes-Watcher"
+  notification.email.config.enabled: "true"
+  notification.email.config.host: "host.docker.internal"
+  notification.email.config.port: "1025"
+  notification.email.config.protocol: "smtp"
+  notification.email.config.to: "support@mycompany.com"

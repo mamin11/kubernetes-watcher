@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filter-config
+data:
+  config.json: |
+    [
+      {
+        "kind": "Pod",
+        "reasons": ["Killing", "Failed", "FailedScheduling", "BackOff", "Unhealthy"]
+      }
+    ]
