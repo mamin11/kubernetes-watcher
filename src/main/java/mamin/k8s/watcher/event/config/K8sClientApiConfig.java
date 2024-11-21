@@ -39,7 +39,7 @@ public class K8sClientApiConfig {
             // Validate the kubeconfig file exists
             if (!new java.io.File(kubeConfigPath).exists()) {
                 log.error("Kubeconfig file not found at {}. Exiting.", kubeConfigPath);
-                System.exit(1);
+                throw new IllegalStateException("Kubeconfig file not found at " + kubeConfigPath);
             }
 
             apiClient = Config.fromConfig(kubeConfigPath);
