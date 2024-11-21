@@ -1,4 +1,5 @@
 # Kubernetes Event Watcher
+![build status](https://github.com/mamin11/kubernetes-watcher/actions/workflows/maven.yml/badge.svg) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/mamin11/kubernetes-watcher/blob/main/LICENSE)
 
 Kubernetes Event Watcher is a Spring Boot application that monitors Kubernetes events and sends notifications via Slack and email.
 
@@ -10,6 +11,11 @@ Kubernetes Event Watcher is a Spring Boot application that monitors Kubernetes e
 
 Docker image available at: [https://hub.docker.com/r/mamin11/kubernetes-watcher/tags](https://hub.docker.com/r/mamin11/kubernetes-watcher/tags)
 
+# Latest image
+
+```
+mamin11/kubernetes-watcher:v1.0.0
+```
 
 ## Prerequisites
 
