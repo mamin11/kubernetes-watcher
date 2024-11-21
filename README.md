@@ -8,6 +8,9 @@ Kubernetes Event Watcher is a Spring Boot application that monitors Kubernetes e
 - Sends notifications to Slack and email.
 - Configurable via environment variables, ConfigMap, and Secret.
 
+Docker image available at: [https://hub.docker.com/r/mamin11/kubernetes-watcher/tags](https://hub.docker.com/r/mamin11/kubernetes-watcher/tags)
+
+
 ## Prerequisites
 
 - Java 11 or higher

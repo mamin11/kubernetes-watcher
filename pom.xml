@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>mamin.k8s</groupId>
 	<artifactId>watcher</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>v1.0.0</version>
 	<name>kubernetes-watcher</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Watch Kubernetes Events and Send notifications</description>
 	<url/>
 	<licenses>
 		<license/>
