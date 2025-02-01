@@ -10,7 +10,7 @@ data:
   notification.slack.config.channel: "k8s-events"
   notification.slack.config.username: "Kubernetes-Watcher"
   notification.email.config.enabled: "true"
-  notification.email.config.host: "host.docker.internal"
+  notification.email.config.host: "mailhog-service.default.svc"
   notification.email.config.port: "1025"
   notification.email.config.protocol: "smtp"
   notification.email.config.to: "support@mycompany.com"
