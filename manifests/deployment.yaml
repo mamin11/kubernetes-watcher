@@ -17,7 +17,7 @@ spec:
       serviceAccountName: k8s-event-watcher-sa
       containers:
         - name: k8s-watcher
-          image: kubernetes-watcher:latest
+          image: mamin11/kubernetes-watcher:v1.0.0
           ports:
             - containerPort: 8080
           env:
